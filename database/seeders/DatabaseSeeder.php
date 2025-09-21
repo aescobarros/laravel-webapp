@@ -17,13 +17,24 @@ class DatabaseSeeder extends Seeder
 
         Artisan::call('db:seed', ['--class' => RolesAndPermissionsSeeder::class]);
 
+       $user = User::factory()->create([
+            'name' => 'Alex Escobar Ros',
+            'email' => 'a.escobar.ros@gmail.com',
+        ]);
+
+        $user->asignRole('admin');
+
+        $user = User::factory()->create([
+            'name' => 'AER',
+            'email' => 'a.escobar.ros@outlook.com',
+        ]);
+
+        $user->assignRole('user');
+
         User::factory(35)->create()->each(function ($user) {
             $user->assignRole('user');
         });
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+     
     }
 }
