@@ -6,6 +6,7 @@ use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Artisan;
+use Database\Seeders\ExpenseTypesSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,7 +23,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'a.escobar.ros@gmail.com',
         ]);
 
-        $user->asignRole('admin');
+        $user->assignRole('admin');
 
         $user = User::factory()->create([
             'name' => 'AER',
@@ -35,6 +36,7 @@ class DatabaseSeeder extends Seeder
             $user->assignRole('user');
         });
 
-     
+        Artisan::call('db:seed', ['--class' => ExpenseTypesSeeder::class]);
+
     }
 }
