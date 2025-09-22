@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\BeneficiaryController;
 use App\Http\Controllers\ExpenseTypeController;
 
 Route::get('/', function () {
@@ -25,9 +26,13 @@ Route::prefix('application')->group(function () {
         Route::put('/edit/update', [ExpenseTypeController::class, 'update'])->name('application.expense-types.update');
         Route::post('/subcategory', [ExpenseTypeController::class, 'storeSubCategory'])->name('application.expense-types.store-sub-category');
         Route::post('/', [ExpenseTypeController::class, 'store'])->name('application.expense-types.store');
+    });
 
-        
-
+    Route::prefix('beneficiearies')->group(function () {
+        Route::get('/', [BeneficiaryController::class, 'index'])->name('application.beneficiaries.index');
+        Route::get('/edit/edit', [BeneficiaryController::class, 'edit'])->name('application.beneficiaries.edit');
+        Route::put('/edit/update', [BeneficiaryController::class, 'update'])->name('application.beneficiaries.update');
+        Route::post('/', [BeneficiaryController::class, 'store'])->name('application.beneficiaries.store');
     });
 
 });

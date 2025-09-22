@@ -15,21 +15,11 @@
                                 @method('PUT')
                                 <h4 class="d-flex flex-row justify-content-between">Ingresos</h4>
                                 <ul>
-                                @foreach($expenses as $expense)
+                                @foreach($beneficiaries as $beneficiaries)
                                     <li>
-                                        <input type="text" class="form-control" name="expense_types[{{ $expense->id }}]" value="{{ $expense->name }}" />
+                                        <input type="text" class="form-control my-2" name="expense_types[{{ $expense->id }}]" value="{{ $expense->name }}" />
                                     </li>     
-                                        @if ($expense->expenseSubTypes()->get())
-                                            <ul>
-                                        @endif
-                                        @foreach($expense->expenseSubTypes()->get() as $expenseSubType)
-                                            <li>
-                                                <input type="text" class="form-control" name="expense_sub_types[{{ $expenseSubType->id }}]" value="{{ $expenseSubType->name }}" />
-                                            </li>                        
-                                        @endforeach
-                                        @if ($expense->expenseSubTypes()->get())
-                                            </ul>
-                                        @endif                   
+                                        
                                 @endforeach
                             
                                 </ul>
@@ -39,13 +29,13 @@
                             <h4 class="d-flex flex-row justify-content-between">Gastos<button type="submit" class="btn"><i class="fas fa-save"></i></h4>
                             <ul>
                             @foreach($incomes as $income)
-                                <input type="text" class="form-control" name="expense_types[{{ $income->id }}]" value="{{ $income->name }}" />
+                                <input type="text" class="form-control my-2" name="expense_types[{{ $income->id }}]" value="{{ $income->name }}" />
                                     @if ($income->expenseSubTypes()->get())
                                         <ul>
                                     @endif
                                     @foreach($income->expenseSubTypes()->get() as $incomeSubType)
                                         <li>
-                                            <input type="text" class="form-control" name="expense_sub_types[{{ $incomeSubType->id }}]" value="{{ $incomeSubType->name }}" />
+                                            <input type="text" class="form-control my-2" name="expense_sub_types[{{ $incomeSubType->id }}]" value="{{ $incomeSubType->name }}" />
                                         </li>                        
                                     @endforeach
                                     @if ($income->expenseSubTypes()->get())

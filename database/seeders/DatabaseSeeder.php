@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Artisan;
 use Database\Seeders\ExpenseTypesSeeder;
+use Database\Seeders\BeneficiariesSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -37,6 +38,8 @@ class DatabaseSeeder extends Seeder
         });
 
         Artisan::call('db:seed', ['--class' => ExpenseTypesSeeder::class]);
+        Artisan::call('db:seed', ['--class' => BeneficiariesSeeder::class]);
+
 
     }
 }
