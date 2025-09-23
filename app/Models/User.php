@@ -3,10 +3,13 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\AccountBook;
+use App\Models\Beneficiary;
+use App\Models\ExpenseType;
+use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
@@ -45,5 +48,17 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function expenseTypes() {
+        return $this->hasMany(ExpenseType::class);
+    }
+
+    public function beneficiaries() {
+        return $this->hasMany(Beneficiary::class);
+    }
+
+    public function accountBooks() {
+        return $this->hasMany(AccountBook::class);
     }
 }

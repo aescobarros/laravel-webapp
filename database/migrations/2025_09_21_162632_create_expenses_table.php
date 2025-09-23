@@ -13,7 +13,20 @@ return new class extends Migration
     {
         Schema::create('expenses', function (Blueprint $table) {
             $table->id();
+            $table->date('date');
+            $table->text('description');
+            $table->unsignedBigInteger('account_book_id');
+            $table->foreign('account_book_id')->references('id')->on('account_books')->onDelete('cascade');
+            $table->unsignedBigInteger('expense_type_id')->nullable();
+            $table->foreign('expense_type_id')->references('id')->on('expense_types')->onDelete('cascade');
+            $table->unsignedBigInteger('expense_sub_type_id')->nullable();
+            $table->foreign('expense_sub_type_id')->references('id')->on('expense_sub_types')->onDelete('set null');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->decimal('value');
+            $table->decimal('state')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

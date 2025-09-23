@@ -37,6 +37,7 @@ class DatabaseSeeder extends Seeder
             $user->assignRole('user');
         });
 
+        Artisan::call('db:seed', ['--class' => AccountBooksSeeder::class]);
         Artisan::call('db:seed', ['--class' => ExpenseTypesSeeder::class]);
         Artisan::call('db:seed', ['--class' => BeneficiariesSeeder::class]);
 
