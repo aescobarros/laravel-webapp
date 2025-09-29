@@ -14,18 +14,13 @@ class Expense extends Model
         'description',
         'account_book_id',
         'expense_type_id',
-        'expense_sub_type_id',
         'user_id',
-        'value',
+        'amount',
         'state'
     ];
 
     public function expenseType() {
         return $this->belongsTo(ExpenseType::class)->first();
-    }
-
-    public function expenseSubType() {
-        return $this->belongsTo(ExpenseSubType::class)->first();
     }
       
 }

@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\ExpenseType;
-use App\Models\ExpenseSubType;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -15,97 +14,74 @@ class ExpenseTypesSeeder extends Seeder
      */
     public function run(): void
     {
-        $users = User::all();
 
         $expenses = [
-            'Transporte Público',
-            'Teléfono',
-            'Tabaco y Alcohol',
-            'Suscripciones',
-            'Supermercados',
-            'Servicios' => [
-                'Alquiler',
-                'Agua',
-                'Gas',
-                'Electricidad'
-            ],
-            'Ropa y Complementos',
-            'Regalos',
-            'Otros Gastos',
-            'Ocio',
-            'Obras Benéficas',
-            'Material Deportivo',
-            'Material de Oficina',
-            'Material de Aseo',
-            'Libros',
-            'Informática',
-            'Impuestos' => [
-                'Seguridad Social',
-                'Retenciones',
-                'Otros Impuestos',
-                'Municipales',
-                'IRPF'
-            ],
-            'Hobbies',
-            'Gastos Médicos',
+            'Alquiler de Vehículos',
+            'Alquiler y Comunidad',
+            'Bienestar y Belleza',
+            'Bizum Realizado',
+            'Cuotas y Suscripciones',
+            'Dinero del Cajero',
+            'Donaciones y Beneficiencia',
             'Educación',
-            'Cargo de Servicio Bancario',
-            'Calzado',
-            'Bares y Restaurantes',
-            'Ajustes'
+            'Electrónica y Electrodomesticos',
+            'Facturación y Comercio Exterior',
+            'Gastos en hipotecas y préstamos',
+            'Hogar',
+            'Hoteles',
+            'Impuestos y Multas',
+            'Amortiz./Cancel. Préstamos',
+            'Bolsa y Valores',
+            'Depósitos y Huchas',
+            'Fondos de Inversion',
+            'Planes de pensión y Previsión',
+            'Joyería y Relojería',
+            'Libros, Prensa, Música y Películas',
+            'Ocio',
+            'Restaurantes',
+            'Ropa y Calzado',
+            'Salud',
+            'Seguridad Social',
+            'Seguros y Mutuas',
+            'Servicios Varios',
+            'Supers e Hipers',
+            'Teléfono / Internet',
+            'Transferencias Realizadas',
+            'Traspasos Realizados',
+            'Transporte',
+            'Varios',
+            'Viaje'
         ];
 
         $incomes = [
-            'Sueldo',
-            'Regalos Recibidos',
-            'Pensiones',
-            'Pagas Extra',
-            'Otros Ingresos',
-            'Ingresos por Interesses' => [
-                'Otros Intereses',
-                'Intereses de Cuenta Corriente',
-                'Intereses de Cuenta de Ahorros'
-            ],
+            'Bizum Recibido',
+            'Facturación y Comercio Exterior',
+            'Impuestos y Multas',
+            'Ingresos de Efectivo/Cheques',
+            'Ingresos de Hipotecas y Prestamos',
+            'Ingresos Varios',
+            'Intereses y Rendimientos',
+            'Bolsa y Valores',
+            'Depósitos y Huchas',
+            'Fondos de Inversión',
+            'Planes de Pensión y Previsión',
+            'Nomina / Pension / Desempleo',
+            'Transferencias Recibidas',
+            'Traspasos Recibidos'
         ];
 
-        foreach ($users as $user) {
-            foreach ($expenses as $item => $expenseType) {
-                $expense_type = ExpenseType::create([
-                    'name' => is_array($expenseType) ? $item : $expenseType,
-                    'expense' => 1,
-                    'user_id' => $user->id
-                ]);
+        foreach ($expenses as $item => $expenseType) {
+            $expense_type = ExpenseType::create([
+                'name' => is_array($expenseType) ? $item : $expenseType,
+                'expense' => 1,
+            ]);
+        }
 
-                if (is_array($expenseType)) {
-                    foreach($expenseType as $expenseSubType) {
-                        ExpenseSubType::create([
-                            'name' => $expenseSubType,
-                            'expense' => 1,
-                            'user_id' => $user->id,
-                            'expense_type_id' => $expense_type->id
-                        ]);
-                    }
-                }
-            }
-
-            foreach ($incomes as $item => $expenseType) {
-                $expense_type = ExpenseType::create([
-                    'name' => is_array($expenseType) ? $item : $expenseType,
-                    'expense' => 0,
-                    'user_id' => $user->id
-                ]);
-
-                if (is_array($expenseType)) {
-                    foreach($expenseType as $expenseSubType) {
-                        ExpenseSubType::create([
-                            'name' => $expenseSubType,
-                            'expense' => 0,
-                            'user_id' => $user->id,
-                            'expense_type_id' => $expense_type->id
-                        ]);
-                    }
-                }
-            }
+        foreach ($incomes as $item => $expenseType) {
+            $expense_type = ExpenseType::create([
+                'name' => is_array($expenseType) ? $item : $expenseType,
+                'expense' => 0,
+            ]);
         }
     }
 }

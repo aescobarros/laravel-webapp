@@ -25,18 +25,8 @@
                                     <tr>
                                         <td>{{ $expense->created_at }}</td>
                                         <td>{{ $expense->date }}</td>
-                                        @if($expense->expenseType())
-                                            <td>{{ $expense->expenseType()->name }}</td>
-                                        @else
-                                        <td></td>
-                                        @endif
-                                        @if($expense->expenseSubType())
-                                            <td>{{ $expense->expenseSubType()->name }}</td>
-                                        @else
-                                            <td></td>
-                                        @endif
-                                        <td>{{ $expense->value }}</td>
-                                        <td>{{ $expense->state }}</td>
+                                        <td>{{ $expense->expenseType()->name }}</td>
+                                        <td>{{ $expense->amount }}</td>
                                     <tr>
                                 @endforeach
                             </tbody>
