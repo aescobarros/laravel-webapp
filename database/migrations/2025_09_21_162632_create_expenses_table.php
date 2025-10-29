@@ -15,8 +15,6 @@ return new class extends Migration
             $table->id();
             $table->date('date');
             $table->text('description');
-            $table->unsignedBigInteger('account_book_id');
-            $table->foreign('account_book_id')->references('id')->on('account_books')->onDelete('cascade');
             $table->unsignedBigInteger('expense_type_id');
             $table->foreign('expense_type_id')->references('id')->on('expense_types')->onDelete('cascade');
             $table->unsignedBigInteger('user_id');

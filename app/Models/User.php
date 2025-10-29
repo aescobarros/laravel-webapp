@@ -3,7 +3,6 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Models\AccountBook;
 use App\Models\Beneficiary;
 use App\Models\ExpenseType;
 use Spatie\Permission\Traits\HasRoles;
@@ -58,7 +57,4 @@ class User extends Authenticatable
         return $this->hasMany(Beneficiary::class);
     }
 
-    public function accountBooks() {
-        return $this->hasMany(AccountBook::class);
-    }
 }
