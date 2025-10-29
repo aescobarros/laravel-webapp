@@ -20,16 +20,6 @@ Route::middleware('auth')->group(function () {
 
 Route::prefix('application')->group(function () {
 
-    Route::prefix('expense-types')->group(function () {
-        Route::get('/', [ExpenseTypeController::class, 'index'])->name('application.expense-types.index');
-    });
-
-    Route::prefix('beneficiearies')->group(function () {
-        Route::get('/', [BeneficiaryController::class, 'index'])->name('application.beneficiaries.index');
-        Route::get('/edit', [BeneficiaryController::class, 'edit'])->name('application.beneficiaries.edit');
-        Route::post('/', [BeneficiaryController::class, 'store'])->name('application.beneficiaries.store');
-        Route::put('/edit/update', [BeneficiaryController::class, 'update'])->name('application.beneficiaries.update');
-    });
 
 });
 
