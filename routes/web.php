@@ -20,15 +20,6 @@ Route::middleware('auth')->group(function () {
 
 Route::prefix('application')->group(function () {
 
-    Route::prefix('account-books')->group(function () {
-        Route::get('/', [AccountBookController::class, 'index'])->name('application.account-books.index');
-        Route::get('/edit', [AccountBookController::class, 'edit'])->name('application.account-books.edit');
-        Route::get('/create', [AccountBookController::class, 'create'])->name('application.account-books.create');
-        Route::get('/{id}', [AccountBookController::class, 'show'])->name('application.account-books.show');
-        Route::put('/edit/{id}/update', [AccountBookController::class, 'update'])->name('application.account-books.update');
-        Route::post('/', [AccountBookController::class, 'store'])->name('application.account-books.store');
-    });
-
     Route::prefix('expense-types')->group(function () {
         Route::get('/', [ExpenseTypeController::class, 'index'])->name('application.expense-types.index');
     });
